@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QRコード 文字列変換ツール</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="column">
+        <h2>1. QRコード読み込み</h2>
+        <label for="qrFileInput">QRコード画像を選択:</label>
+        <input type="file" id="qrFileInput" accept="image/*">
+    
+        <p>プレビュー:</p>
+        <img id="imagePreview" src="#" alt="選択された画像">
+    
+        <div id="readResultStatus">読み込み結果が表示されます...</div>
+    
+        <label for="inputText">読み込み/入力 文字列:</label>
+        <textarea id="inputText" placeholder="ここにQRコードの文字列が表示されるか、直接入力してください。"></textarea>
+        <canvas id="qrReadCanvas"></canvas>
+    </div>
+
+    <div class="column">
+        <h2>2. データ変換とQR生成</h2>
+        <button id="convertAndGenerateBtn">変換してQRコードを生成</button>
+        <div id="generateStatus">生成結果が表示されます...</div>
+
+        <label>生成されたQRコード:</label>
+        <canvas id="generatedQrCode"></canvas>
+        <a id="saveQrBtn" class="hidden" href="#" download="qrcode.png">QRコードを保存</a>
+    </div>
+
+    <div id="usageInfo">
+        <h2>使い方・注意事項</h2>
+        <ul>
+            <li>QRコードの読み込みに失敗した場合は、スマホのQRコードリーダーで読み込んだ文字列を直接入力してください</li>
+            <li>妙にでかいQRコードの変換に対応してます</li>
+            <li>絵文字とかnull文字とかの変換は仕組みがわからないので対応してません</li>
+            <li>このツールはMITライセンスのもとで公開されています</li>
+        </ul>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jsqr@1.4.0/dist/jsQR.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>

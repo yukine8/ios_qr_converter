@@ -1,0 +1,128 @@
+body {
+    font-family: sans-serif;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 左右2カラムレイアウト */
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+.column {
+    border: 1px solid #ccc;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+h2 {
+    margin-top: 0;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 5px;
+}
+label, p {
+    display: block;
+    margin-bottom: 5px;
+}
+textarea {
+    width: 95%;
+    min-height: 100px;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    font-family: monospace; /* 等幅フォントが見やすい */
+    resize: vertical; /* 縦方向のリサイズのみ許可 */
+}
+button {
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+button:hover {
+    background-color: #0056b3;
+}
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+#qrReadCanvas {
+    display: none; /* 読み込み用Canvasは非表示 */
+}
+#generatedQrCode {
+    display: block; /* 生成されたQRコードは表示 */
+    max-width: 100%;
+    height: auto;
+    margin-top: 15px;
+    border: 1px solid #ddd;
+}
+#readResultStatus, #generateStatus {
+    margin-top: 10px;
+    font-weight: bold;
+    min-height: 1.2em; /* メッセージ表示用に高さを確保 */
+}
+#readResultStatus.success { color: green; }
+#readResultStatus.error { color: red; }
+#generateStatus.success { color: green; }
+#generateStatus.error { color: red; }
+#imagePreview {
+    max-width: 200px;
+    max-height: 200px;
+    margin-top: 10px;
+    border: 1px solid #ddd;
+     display: none; /* 初期状態は非表示 */
+}
+
+#usageInfo {
+    grid-column: 1 / -1; /* グリッドレイアウトで全幅を使う */
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
+    background-color: #f0f0f0;
+}
+#usageInfo h2 {
+    margin-top: 0;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 5px;
+    font-size: 1.2em; /* 見出しを少し小さめに */
+}
+#usageInfo ul {
+    margin: 10px 0 0 20px; /* 上マージンと左のインデント */
+    padding: 0;
+}
+#usageInfo li {
+    margin-bottom: 5px; /* リスト項目間のスペース */
+}
+
+/* 保存ボタン用のスタイル */
+#saveQrBtn {
+    display: inline-block; /* ボタンのように表示 */
+    padding: 8px 12px;
+    margin-top: 10px;
+    cursor: pointer;
+    background-color: #28a745; /* 緑色系の背景 */
+    color: white;
+    border: none;
+    border-radius: 3px;
+    text-decoration: none; /* リンクの下線を消す */
+    font-size: 0.9em;
+    transition: background-color 0.2s;
+}
+#saveQrBtn:hover {
+    background-color: #218838; /* ホバー時の色 */
+}
+/* 非表示状態のスタイル (JSで制御) */
+#saveQrBtn.hidden {
+    display: none;
+}
+
+/* スマートフォンなど幅が狭い場合 */
+@media (max-width: 768px) {
+    body {
+        grid-template-columns: 1fr; /* 1カラムにする */
+    }
+}
